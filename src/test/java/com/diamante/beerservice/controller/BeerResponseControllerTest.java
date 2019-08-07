@@ -1,6 +1,6 @@
 package com.diamante.beerservice.controller;
 
-import com.diamante.beerservice.model.Beer;
+import com.diamante.beerservice.model.BeerResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,8 +34,8 @@ class BeerControllerTest {
 
     @Test
     void saveNewBeer() throws Exception {
-        Beer beer = Beer.builder().build();
-        String beerJson = objectMapper.writeValueAsString(beer);
+        BeerResponse beerResponse = BeerResponse.builder().build();
+        String beerJson = objectMapper.writeValueAsString(beerResponse);
 
         mockMvc.perform(post("/api/v1/beer")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -45,8 +45,8 @@ class BeerControllerTest {
 
     @Test
     void updateBeerById() throws Exception {
-        Beer beer = Beer.builder().build();
-        String beerJson = objectMapper.writeValueAsString(beer);
+        BeerResponse beerResponse = BeerResponse.builder().build();
+        String beerJson = objectMapper.writeValueAsString(beerResponse);
 
         mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID().toString())
                 .contentType(MediaType.APPLICATION_JSON)

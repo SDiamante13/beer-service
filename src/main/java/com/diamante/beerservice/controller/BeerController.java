@@ -1,6 +1,6 @@
 package com.diamante.beerservice.controller;
 
-import com.diamante.beerservice.model.Beer;
+import com.diamante.beerservice.model.BeerResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,17 +12,17 @@ import java.util.UUID;
 public class BeerController {
 
     @GetMapping("/{beerId}")
-    public ResponseEntity<Beer> getBeerById(@PathVariable("beerId") UUID beerId) {
-        return new ResponseEntity<>(Beer.builder().beerName("Beer").build(), HttpStatus.OK);
+    public ResponseEntity<BeerResponse> getBeerById(@PathVariable("beerId") UUID beerId) {
+        return new ResponseEntity<>(BeerResponse.builder().build(), HttpStatus.OK);
     }
 
     @PostMapping()
-    public ResponseEntity saveNewBeer(@RequestBody Beer beer) {
+    public ResponseEntity saveNewBeer(@RequestBody BeerResponse beerResponse) {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody Beer beer) {
+    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody BeerResponse beerResponse) {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
