@@ -11,18 +11,18 @@ import java.util.UUID;
 @RestController
 public class BeerController {
 
-    @GetMapping("{/beerId}")
-    public ResponseEntity<Beer> getBeerById(@PathVariable("/beerId") UUID beerId) {
-        return new ResponseEntity<>(Beer.builder().build(), HttpStatus.OK);
+    @GetMapping("/{beerId}")
+    public ResponseEntity<Beer> getBeerById(@PathVariable("beerId") UUID beerId) {
+        return new ResponseEntity<>(Beer.builder().beerName("Beer").build(), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity saveNewBeer(@RequestBody Beer beer) {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-    @PutMapping("{/beerId}")
-    public ResponseEntity updateBeerById(@PathVariable("/beerId") UUID beerId, @RequestBody Beer beer) {
+    @PutMapping("/{beerId}")
+    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody Beer beer) {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
